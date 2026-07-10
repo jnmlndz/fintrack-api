@@ -9,7 +9,7 @@ export class User{
     email:string;
 
     @Column() //Columna para contraseña (se guarda el hash)
-    pasword: string; 
+    password: string; 
 
     @Column() //Columna para el nombre del usuario
     name: string;
