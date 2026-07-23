@@ -8,6 +8,7 @@ import { User } from './entities/user.entity';
   imports: [TypeOrmModule.forFeature([User])], // registra la Entity para poder inyectar su repositorio
   providers: [UsersService],
   controllers: [UsersController],
+  exports: [UsersService], 
 })
 export class UsersModule {}
 
