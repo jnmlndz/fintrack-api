@@ -20,6 +20,24 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 export class TransactionsController {
   constructor(private readonly transactionsService: TransactionsService) {}
 
+  //Reportes de transacciones
+  @Get('summary/balance')
+    getBalance(@Request() req) {
+        return this.transactionsService.getBalance(req.user.userId);
+  }
+
+  @Get('summary/by-category')
+    getExpensesByCategory(@Request() req) {
+        return this.transactionsService.getExpensesByCategory(req.user.userId);
+  }
+
+  @Get('summary/monthly')
+    getMonthlySummary(@Request() req) {
+        return this.transactionsService.getMonthlySummary(req.user.userId);
+  }
+
+  //fin de reportes de transacciones
+
   @Post()
   create(@Request() req, @Body() dto: CreateTransactionDto) {
     return this.transactionsService.create(req.user.userId, dto);

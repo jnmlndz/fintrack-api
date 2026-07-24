@@ -4,6 +4,11 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  app.enableCors({
+    origin: 'http://localhost:5173', // el origen exacto de tu frontend en desarrollo
+  });
+  
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true, // elimina cualquier propiedad que NO esté en el DTO (seguridad extra)
     forbidNonWhitelisted: true, // si mandan un campo de más, rechaza la petición con error
